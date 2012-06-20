@@ -20,10 +20,22 @@
 		public function show_table($tbl){
 			try{
 				$res = $this->db->query("SELECT * FROM ".$tbl);
-				$this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION ); 
-				while($row = $res->fetch()){
-					print_r($row[title]);
-				}		
+				$this->db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+				$result=$res->fetch();
+				$flag=1;
+				foreach ($result as $key => $value) {
+				 	if($flag!=1){
+				 	   print_r($key." <= key<br>");
+				 	   $flag=0;
+
+				 	}
+				 	foreach ($result as $k => $val) {
+				 		print_r($k."<br>");
+				 	}
+				} 
+/*				while($row = $res->fetch()){
+					print_r($row[1]);
+				}*/		
 			}
 			catch(PDOException $e){
 				echo $e->getMessage();	
