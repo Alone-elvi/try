@@ -1,19 +1,24 @@
 <?php 
-	class Blog{
-		function __construct(){
-			$file = $_SERVER['DOCUMENT_ROOT'].'/models/mdbase.php';
+class Blog{
 
-	    	if (file_exists($file) == false) {
-	    		echo "File ".$file." not found";
-				return false;
-		    }
+	function SetConf($conf){
+		$this->config = $conf;
+	}
 
-		    include ($file);
-		    $this->db = new MDBase;
-
+	function LoadModel(){
+		$file = $this->config['base_url'].'/'.$this->config['models'].'/'.$this->config['model']['mdbase'];
+		if (! (file_exists($file))){ 
+			header("Status: 404 Not Found");
+			header('HTTP/1.0 404 Not Found');
+			echo 'File not found';
+			return false;
 		}
-		function show(){
-			$this->db->show_table('al_main');
+		else{
+			include ($file);
+			$db = new MDBase;
+			//echo $this->config['db_table'];
+			$db->show_table($this->config['db_table']);
 		}
 	}
+}
 ?>

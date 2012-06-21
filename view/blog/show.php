@@ -1,5 +1,4 @@
 <?php
-	
 if ((file_exists($file)) ){ 
 	include($_SERVER['DOCUMENT_ROOT'].'/models/mdbase.php');
 }
