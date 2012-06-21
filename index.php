@@ -11,29 +11,26 @@ class Main{
 	}
 
 	function LoadContr($request){
-		for ($i = 0; $i < count($this->config['controller']) ; $i++) {
+		//$ret=false;
+		for ($i = 0; $i <count($this->config['controller']) ; $i++) {
 			$r = each($this->config['controller']);
-
 			if($r['key']==$request[1]){
 				$file = $this->config['base_url'].'/'.$this->config['controllers'].'/'.$this->config['controller'][$request[1]];
 				if (! (file_exists($file))){ 
-					header("Status: 404 Not Found");
-					header('HTTP/1.0 404 Not Found');
-					echo 'File not found';
-					return false;
+					$ret = false;
 				}
 				else{
 					include ($file);
-					return true;
+					$ret = true;
+					return $ret;
 				}
 			}
 			else{
-				header("Status: 404 Not Found");
-				header('HTTP/1.0 404 Not Found');
-				echo 'File not found';
-				return false;
+				$ret = false;
 			}
 		}
+
+		return $ret;
 	}
 }
 
@@ -53,7 +50,7 @@ if($err!=false){
 else{
 	header("Status: 404 Not Found");
 	header('HTTP/1.0 404 Not Found');
-	echo("<img src=\"images/404.jpg\">");
-
+	echo 'File not found';
+	echo("<img src=\"/images/404.jpg\">");
 }
 ?>
