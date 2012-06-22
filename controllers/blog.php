@@ -16,8 +16,31 @@ class Blog{
 		else{
 			include ($file);
 			$db = new MDBase;
-			//echo $this->config['db_table'];
-			$db->show_table($this->config['db_table']);
+//			$db->show_table($this->config['db_table']);
+
+
+			$file_show = $this->config['base_url'].'/'.$this->config['view'].'/'.$this->config['curr_req'].'/show.php';
+			if (! (file_exists($file_show))){ 
+				header("Status: 404 Not Found");
+				header('HTTP/1.0 404 Not Found');
+				echo 'File not found';
+				return false;
+			}
+			else{
+				$result['header'] = array (
+																		'<a href="#">Домой</a>',
+																		'<a href="#">Блог</a>',
+																		'<a href="#">Фото</a>',
+																		'<a href="#">КОнтакты</a>',
+				);
+				$result['title'] = "We are the champions";
+				$result['content'] = "CONTENT";
+				$result['footer'] = "2012 YaiHu";
+
+ 				include ($file_show);
+
+			}
+
 		}
 	}
 }

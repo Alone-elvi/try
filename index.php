@@ -1,13 +1,14 @@
 <?php
 
+require_once('config/conf.php');
 
 class Main{
 	function __construct(){
-		require('config/conf.php');
-    $this->config = $conf;
+		//require_once('config/conf.php');
+
+    $this->config = $GLOBALS['conf'];
 		$req = $_SERVER['REQUEST_URI'];
 		$this->request = explode("/", $req);
-
 	}
 
 	function LoadContr($request){
@@ -21,6 +22,7 @@ class Main{
 				}
 				else{
 					include ($file);
+					$this->config['curr_req'] = $request[1];
 					$ret = true;
 					return $ret;
 				}
@@ -33,6 +35,7 @@ class Main{
 		return $ret;
 	}
 }
+
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');

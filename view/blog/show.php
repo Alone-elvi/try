@@ -1,10 +1,24 @@
-<?php
-if ((file_exists($file)) ){ 
-	include($_SERVER['DOCUMENT_ROOT'].'/models/mdbase.php');
-}
-else{
-	return "Have not find DB model";
-}
-	$db = new MDBase;
-	$db->show_table('al_main');
-?>	
+
+<html>
+
+<head>
+	<title><?php echo $result['title']?></title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+</head>
+<body>
+	<div id="header">
+		<?php foreach ($result['header'] as $key => $value):?>
+		<?php echo $value;?> 			
+		<?php endforeach;?>
+
+	</div>
+	<div id="content">
+		<?php echo $result['content'];?>
+	</div>
+	<div> 
+		<?php echo $result['footer'];?>
+	</div> 
+
+</body>
+</html>
