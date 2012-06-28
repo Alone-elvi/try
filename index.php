@@ -36,7 +36,6 @@ class Main{
 	}
 }
 
-
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -44,11 +43,11 @@ $main = new Main;
 $err = $main->LoadContr($main->request);
 
 if($err!=false){
-	$contr = new $main->request[1];
 	$main->config['db_table']=$main->request[1];
 
-	$contr->SetConf($main->config);
-	$contr->LoadModel();
+	$contr = new $main->request[1];
+	$contr->SetConf($main->config, $main->request);
+	$contr->show();
 }
 else{
 	header("Status: 404 Not Found");

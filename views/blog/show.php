@@ -8,15 +8,17 @@
 </head>
 <body>
 	<div id="header">
-		<?php foreach ($result['header'] as $key => $value):?>
+		<?php foreach ($result['menu'] as $key => $value):?>
 		<?php echo $value;?> 			
 		<?php endforeach;?>
 
 	</div>
 	<div id="content">
-		<?php echo $result['content'];?>
+		<br>
+		<?php echo $result['comment'];?>
 	</div>
 	<div> 
+		<br>
 		<?php echo $result['footer'];?>
 	</div> 
 

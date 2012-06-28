@@ -1,11 +1,12 @@
 <?php 
 class Blog{
 
-	function SetConf($conf){
+	function SetConf($conf, $req){
 		$this->config = $conf;
+		$this->requset = $req;
 	}
 
-	function LoadModel(){
+	function show(){
 		$file = $this->config['base_url'].'/'.$this->config['models'].'/'.$this->config['model']['mdbase'];
 		if (! (file_exists($file))){ 
 			header("Status: 404 Not Found");
@@ -15,11 +16,9 @@ class Blog{
 		}
 		else{
 			include ($file);
-			$db = new MDBase;
-//			$db->show_table($this->config['db_table']);
+			$db = new MDBase($this->config);
 
-
-			$file_show = $this->config['base_url'].'/'.$this->config['view'].'/'.$this->config['curr_req'].'/show.php';
+			$file_show = $this->config['base_url'].'/'.$this->config['views'].'/'.$this->config['curr_req'].'/show.php';
 			if (! (file_exists($file_show))){ 
 				header("Status: 404 Not Found");
 				header('HTTP/1.0 404 Not Found');
@@ -27,20 +26,11 @@ class Blog{
 				return false;
 			}
 			else{
-				$result['header'] = array (
-																		'<a href="#">Домой</a>',
-																		'<a href="#">Блог</a>',
-																		'<a href="#">Фото</a>',
-																		'<a href="#">КОнтакты</a>',
-				);
-				$result['title'] = "We are the champions";
-				$result['content'] = "CONTENT";
-				$result['footer'] = "2012 YaiHu";
-
  				include ($file_show);
-
+ 				$str = ($this->config['curr_req']."(".$this->requset[2].")");
+ 				echo $str;
+ 				$model = new $str;
 			}
-
 		}
 	}
 }

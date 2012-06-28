@@ -5,7 +5,7 @@ global $conf;
 	'base_url' => $_SERVER['DOCUMENT_ROOT'],
 	'index_page' =>  'index.php',
 	'controllers' => 'controllers',
-	'view' => 'view',
+	'views' => 'views',
 	'models' => 'models',
 	'curr_req' => '',
 	'controller' => array ('blog' => 'blog.php',
