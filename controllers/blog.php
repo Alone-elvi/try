@@ -1,7 +1,7 @@
 <?php 
 class Blog{
 
-	function SetConf($conf, $req){
+	function __construct($conf, $req){
 		$this->config = $conf;
 		$this->requset = $req;
 	}

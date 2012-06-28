@@ -43,11 +43,13 @@ $main = new Main;
 $err = $main->LoadContr($main->request);
 
 if($err!=false){
-	$main->config['db_table']=$main->request[1];
+	$main->config['db_table']=$main->request[1]; 
+	
+	$contr_name = new $main->request[1];
+	$contr = new $contr_name($main->config, $main->request);
 
-	$contr = new $main->request[1];
-	$contr->SetConf($main->config, $main->request);
 	$contr->show();
+
 }
 else{
 	header("Status: 404 Not Found");
