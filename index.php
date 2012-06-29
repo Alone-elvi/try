@@ -17,7 +17,7 @@ class Main{
 			$r = each($this->config['controller']);
 			if($r['key']==$request[1]){
 				$file = $this->config['base_url'].'/'.$this->config['controllers'].'/'.$this->config['controller'][$request[1]];
-				if (! (file_exists($file))){ 
+				if (! (file_exists($file))){
 					$ret = false;
 				}
 				else{
@@ -41,14 +41,14 @@ ini_set('display_errors', '1');
 
 $main = new Main;
 $err = $main->LoadContr($main->request);
-
 if($err!=false){
-	$main->config['db_table']=$main->request[1]; 
-	
+	$main->config['db_table']=$main->request[1];
+
 	$contr_name = $main->request[1];
 	$contr = new $contr_name($main->config, $main->request);
 
-	$contr->show();
+	$action_name = $main->request[2];
+	$contr->$action_name();
 
 }
 else{
