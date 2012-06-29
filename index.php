@@ -45,7 +45,7 @@ $err = $main->LoadContr($main->request);
 if($err!=false){
 	$main->config['db_table']=$main->request[1]; 
 	
-	$contr_name = new $main->request[1];
+	$contr_name = $main->request[1];
 	$contr = new $contr_name($main->config, $main->request);
 
 	$contr->show();

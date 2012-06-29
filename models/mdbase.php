@@ -20,6 +20,11 @@
 			}
 		}
 
+		function table_count(){
+			$c = $this->db->query("SELECT * FROM ".$this->config['curr_req']);
+			return $count = count($c);
+		}
+
 		function get_row($id){
 			try{
 				$str = "SELECT * FROM ".$this->config['curr_req']." WHERE id=".$id;
