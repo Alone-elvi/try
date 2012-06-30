@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="header">
-		<h1><?= $this->params['test'] ?></h1>
+		<h1><?= $params['test'] ?></h1>
 	</div>
 	<div id="content">
 	</div>
