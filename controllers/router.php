@@ -1,5 +1,6 @@
 <?php 
-class Router extends Main{
+
+class Router{
   private $dirs = array('controllers_dir'=>'controllers', 'views_dir' => 'views', 'models_dir' => 'models');
   
   public $arr_parts = array('controller' => '', 'action' => '', 'value' => '');
@@ -8,7 +9,7 @@ class Router extends Main{
 		$this->request = $request;
 		$route = (empty($request)) ? '' : $request;
 		if (empty($route)){
-						$this->arr_parts['controller'] = 'index';
+			$this->arr_parts['controller'] = 'index';
 		}
 		$route = trim($route, '/\\');
 		$parts = explode('/', $route);
@@ -17,7 +18,12 @@ class Router extends Main{
 
 		$file_controller = $fullpath.'/'.$this->dirs['controllers_dir'].'/'.$parts[0].'.php';
 		if(is_file($file_controller)){
-			$this->include_file ($file_controller);
+			var_dump(method_exists('Library','Library'));
+
+//Проба попользоваться статичной функцией
+
+			$Library::include_file($file_controller);
+
 			$this->arr_parts['controller'] = $parts[0];
 			if(is_dir($fullpath.'/'.$this->dirs['views_dir'].'/'.$parts[0])){
 				if(isset($parts[1])){

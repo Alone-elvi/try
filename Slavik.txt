@@ -1,0 +1,39 @@
+if(isset ($main->req[2])){
+$cl->show();
+}
+вот это надо не хардкодить а брать из второго параметра
+[18.06.12 16:52:26] Kane (Vyacheslav Kim) sendgrid.com: исключение ловить и если такого метода нет то говорить Not Found
+[18.06.12 16:52:30] Kane (Vyacheslav Kim) sendgrid.com: как то так
+[18.06.12 16:52:57] Alone ELVI: Я думаю, там вообще этого не будет
+[18.06.12 16:53:04] Kane (Vyacheslav Kim) sendgrid.com: еще создать папку views
+ function show(){
+$this->db->show_table('al_main');
+}
+и сделать так чтоб выводило не в контроллере прямо
+а чтоб инклюдило views/blog/show.php
+[18.06.12 16:53:21] Kane (Vyacheslav Kim) sendgrid.com: типа того че то
+[18.06.12 16:53:37] Kane (Vyacheslav Kim) sendgrid.com: ну вот те элементарный фреймворк
+а внутри папки blog уже вьюхи для action - show и т.д.
+[18.06.12 21:45:35] Kane (Vyacheslav Kim) sendgrid.com: ну так хорошо
+[18.06.12 21:45:39] Kane (Vyacheslav Kim) sendgrid.com: я тебе в общем говорю
+
+
+index -> include controller/blog.php -> include views/blog/show.php
+[21.06.12 11:19:33] Kane (Vyacheslav Kim) sendgrid.com: нет это просто чтоб в контроллере не было html
+[21.06.12 11:19:43] Kane (Vyacheslav Kim) sendgrid.com: надо весь вывод оттуда унести во view
+[21.06.12 11:20:02] Kane (Vyacheslav Kim) sendgrid.com: в контроллере только логика должны быть
+[21.06.12 11:20:13] Kane (Vyacheslav Kim) sendgrid.com: отображение в view
+[21.06.12 11:20:29] Kane (Vyacheslav Kim) sendgrid.com: контроллер готовит данные для view - например в виде массива
+[21.06.12 11:20:45] Kane (Vyacheslav Kim) sendgrid.com: view - должен пробегать по массиву и строить html
+[21.06.12 11:20:47] Kane (Vyacheslav Kim) sendgrid.com: как то так
+header("Status: 404 Not Found");
+header('HTTP/1.0 404 Not Found');
+[21.06.12 11:32:26] Kane (Vyacheslav Kim) sendgrid.com: вот так даже правильнее
+и делается типа так - header('Location: /blabla/fofo/'); exit;
+
+** Имя пользователя MySQL */
+define('DB_USER', 'alone_windows');
+
+/** Пароль к базе данных MySQL */
+define('DB_PASSWORD', '@dmin2O11!');
+[23.06.12 12:01:47] Kane (Vyacheslav Kim) sendgrid.com: http://12tree.ru/pp/index.php

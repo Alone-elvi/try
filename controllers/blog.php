@@ -1,5 +1,5 @@
 <?php
-class Blog extends Main{
+class Blog extends Controller{
 
 	function __construct($parts){
 		$this->parts = $parts;
@@ -10,8 +10,9 @@ class Blog extends Main{
 	{
 		$file = "{$this->dir}/{$this->parts['action']}.php";
 		$this->params = $params;
-		$this->include_file($file);
+		$this->library->include_file($file);
 	}
+
 	function show(){
 		$data = array(
 			'test' => 'Hello!'

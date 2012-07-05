@@ -1,29 +1,18 @@
 <?php
-
-//require_once('config/conf.php');
-
-class Main{
+class Controller{
 	function __construct(){
+		$this->library = new Library;
+		$this->library->include_file("controllers/router.php");
 		$this->request = $_SERVER['REQUEST_URI'];
 		$this->base_url = $_SERVER['DOCUMENT_ROOT'];
-	}
-
-	function include_file($file){
-		if (! (file_exists($file))){
-			header("Status: 404 Not Found");
-			header('HTTP/1.0 404 Not Found');
-			echo 'File not found';
-			return false;
-		}
-		include($file);
 	}
 }
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+require ('library/library.php');
 
-$main = new Main;
-$main->include_file("controllers/router.php");
+$main = new Controller;
 
 $router = new Router($main->request);
 
