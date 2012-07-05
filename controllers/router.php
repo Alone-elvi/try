@@ -18,11 +18,10 @@ class Router{
 
 		$file_controller = $fullpath.'/'.$this->dirs['controllers_dir'].'/'.$parts[0].'.php';
 		if(is_file($file_controller)){
-			var_dump(method_exists('Library','Library'));
 
 //Проба попользоваться статичной функцией
 
-			$Library::include_file($file_controller);
+			Library::include_file($file_controller);
 
 			$this->arr_parts['controller'] = $parts[0];
 			if(is_dir($fullpath.'/'.$this->dirs['views_dir'].'/'.$parts[0])){

@@ -1,16 +1,18 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+require_once ('library/library.php');
+
 class Controller{
 	function __construct(){
 		$this->library = new Library;
-		$this->library->include_file("controllers/router.php");
 		$this->request = $_SERVER['REQUEST_URI'];
 		$this->base_url = $_SERVER['DOCUMENT_ROOT'];
+		Library::include_file("controllers/router.php");
 	}
 }
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-require ('library/library.php');
 
 $main = new Controller;
 

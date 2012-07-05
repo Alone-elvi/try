@@ -9,8 +9,7 @@ class Blog extends Controller{
 	function render($params)
 	{
 		$file = "{$this->dir}/{$this->parts['action']}.php";
-		$this->params = $params;
-		$this->library->include_file($file);
+		Library::include_file($file, $params);
 	}
 
 	function show(){
