@@ -6,17 +6,14 @@ require_once ('library/library.php');
 
 class Controller{
 	function __construct(){
-		$this->library = new Library;
 		$this->request = $_SERVER['REQUEST_URI'];
 		$this->base_url = $_SERVER['DOCUMENT_ROOT'];
-		Library::include_file("controllers/router.php");
 	}
 }
+$request = $_SERVER['REQUEST_URI'];
+Library::include_file("controllers/router.php");
 
-
-$main = new Controller;
-
-$router = new Router($main->request);
+$router = new Router($request);
 
 $contr_name = $router->arr_parts['controller'];
 $contr = new $contr_name($router->arr_parts);
@@ -25,6 +22,4 @@ $action_name = $router->arr_parts['action'];
 if($action_name){
 	$contr->$action_name();
 }
-
-
 ?>
