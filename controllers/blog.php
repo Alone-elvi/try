@@ -1,29 +1,24 @@
 <?php
 class Blog extends Controller{
+	
+	private $data = array();
 
 	function __construct($parts){
 		$this->parts = $parts;
-		$this->dir = "{$this->parts['dirs']['views_dir']}/{$this->parts['controller']}";
-	}
-	
-	function render($params)
-	{
-		$file = "{$this->dir}/{$this->parts['action']}.php";
-		Library::include_file($file, $params);
+		Library::include_file("models/models.php");
+		$model = new Models($this->parts);
+		Library::include_file("models/model_{$this->parts['controller']}.php");
 	}
 
 	function show(){
-		$data = array(
-			'test' => 'Hello!'
-		);
-		$this->render($data);
+		$res = model_blog::where("id",1);
+		$data['test'] = $res['title'];
+		Library::render($this->parts, $data);
 	}
 
 	function find(){
-		$data = array(
-			'title' => 'This is find page!'
-		);
-		$this->render($data);
+		$data['title'] = 'This is find page!';
+		Library::render($this->parts, $data);
 	}
 }
 ?>

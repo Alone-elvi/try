@@ -14,5 +14,13 @@ class Library{
 		}
 		include($file);
 	}
+
+	static function render($parts, $params)
+	{
+		$dir = "{$parts['dirs']['views_dir']}/{$parts['controller']}";
+		$file = "{$dir}/{$parts['action']}.php";
+		self::include_file($file, $params);
+	}
+
 }
 ?>
