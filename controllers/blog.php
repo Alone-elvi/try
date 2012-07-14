@@ -3,7 +3,6 @@ class Blog extends Controller{
 	
 	private $data = array();
 
-
 	function show($req){
 		$res = model_blog::where("id",1);
 		$data['test'] = $res['title'];

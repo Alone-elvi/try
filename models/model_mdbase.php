@@ -20,5 +20,17 @@
 			    file_put_contents('PDOErrors.txt', $e->getMessage(), FILE_APPEND);  
 			}
 		}
+
+		static function add($req){
+
+		}
+
+		static function delete(){
+
+		}
+
+		static function insert(){
+
+		}
 	}
 ?>
