@@ -1,16 +1,18 @@
 <?php 
-require_once ('models/mdbase.php');
+class model_blog extends Blog{
 
-class model_blog extends Models{
 	private static $request = array();
 	function __construct(){
+	}
 
+	static function hello(){
+		echo "model_blog class";
 	}
 	static function where($req, $id){
-		$base = new MDBase;
-		$contr = self::getParts();
-		$table = $contr['controller'];
-		$res = $base->db->query("SELECT * FROM {$table} WHERE {$req}={$id}");
+
+		$table = 'blog';
+		$db=model_MDBase::get_db();
+		$res = $db->query("SELECT * FROM {$table} WHERE {$req}={$id}");
  		return $res->fetch();
 	}
 }

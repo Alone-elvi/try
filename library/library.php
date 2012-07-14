@@ -17,8 +17,7 @@ class Library{
 
 	static function render($parts, $params)
 	{
-		$dir = "{$parts['dirs']['views_dir']}/{$parts['controller']}";
-		$file = "{$dir}/{$parts['action']}.php";
+		$file = "views/{$parts['controller']}/{$parts['action']}.php";
 		self::include_file($file, $params);
 	}
 
