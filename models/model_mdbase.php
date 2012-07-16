@@ -21,11 +21,11 @@
 			}
 		}
 
-		static function add($req){
-
+		static function add($id){
+			var_dump(router::$route);
 		}
 
-		static function delete(){
+		static function delete($num){
 
 		}
 

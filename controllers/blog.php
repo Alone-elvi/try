@@ -3,15 +3,21 @@ class Blog extends Controller{
 	
 	private $data = array();
 
-	function show($req){
+	static function show($req){
 		$res = model_blog::where("id",1);
 		$data['test'] = $res['title'];
-		Library::render($req, $data);
+		Library::view($data);
 	}
 
-	function find($req){
+	static function find($req){
 		$data['title'] = 'This is find page!';
-		Library::render($req, $data);
+		Library::view($data);
+	}
+
+	static function add($id){
+		$res = model_blog::where("id",1);
+		Library::view($data);
+		var_dump($res);
 	}
 }
 ?>

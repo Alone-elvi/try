@@ -12,7 +12,6 @@ function autoload ($className){
 	else{
 		$fileName = "models/".$className.".php";
 	}
-	include  $fileName;	
-
-  }
+	Library::include_file($fileName);
+ }
 ?>

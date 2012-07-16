@@ -1,6 +1,7 @@
 <?php 
 
 class Router{
+	static $route = array();
   /*private $dirs = array('controllers_dir'=>'controllers', 'views_dir' => 'views', 'models_dir' => 'models');
   
   public $arr_parts = array('controller' => '', 'action' => '', 'value' => '');
@@ -46,14 +47,14 @@ class Router{
   	$route = array();
   	$r = trim($request, '/\\');
 		$parts = explode('/', $r);
-		$route['controller'] = $parts[0];
-		$route['action'] = $parts[1];
+		self::$route['controller'] = $parts[0];
+		self::$route['action'] = $parts[1];
 		$i=1;
 		while($i++<count($parts)-1){
-			$route['params'][$i-1]=$parts[$i];
+			self::$route['params'][$i-1]=$parts[$i];
 		}
-		$route['fullpath'] = "{$_SERVER['DOCUMENT_ROOT']}/controllers/{$route['controller']}.php";
-		return $route;
+		self::$route['fullpath'] = "{$_SERVER['DOCUMENT_ROOT']}/controllers/".self::$route['controller'].".php";
+		return self::$route;
   }
 }
 ?>

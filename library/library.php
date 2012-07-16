@@ -15,9 +15,9 @@ class Library{
 		include($file);
 	}
 
-	static function render($parts, $params)
+	static function view($params)
 	{
-		$file = "views/{$parts['controller']}/{$parts['action']}.php";
+		$file = "views/".router::$route['controller']."/".router::$route['action'].".php";
 		self::include_file($file, $params);
 	}
 
